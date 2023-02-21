@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reloj cuenta regresiva</title>
+	<script>
+		function countDown() {
+			var today = new Date();
+			var minutes = today.getMinutes();
+			var seconds = today.getSeconds();
+			var nextEvenMinute = (Math.floor(minutes / 2) + 1) * 2;
+			var remainingSeconds = (nextEvenMinute - minutes - 1) * 60 + (60 - seconds);
+			document.getElementById("countdown").innerHTML = "Quedan " + Math.floor(remainingSeconds / 60) + " minutos y " + remainingSeconds % 60 + " segundos para el próximo minuto par.";
+		}
+
+		function updateTime() {
+			var today = new Date();
+			document.getElementById("user-time").innerHTML = "La hora del usuario es: " + today.toLocaleString();
+		}
+
+		setInterval(countDown, 1000);
+		setInterval(updateTime, 1000);
+	</script>
+</head>
+<body>
+	<h1>Reloj cuenta regresiva</h1>
+	<p id="countdown"></p>
+	<p id="user-time"></p>
+</body>
+</html>
